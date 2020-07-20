@@ -1,0 +1,55 @@
+h1 {
+    color: #607bff;
+    font-family: Brushstroke, Verdana, cursive;
+    font-size: 30px;
+    text-align: center;
+}
+
+body{
+    background-color: #96caeb;
+}
+
+img{
+    display:block;
+    width:150px;
+    height:150px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+div.form
+{
+    display: block;
+    text-align: center;
+}
+form
+{
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+div.center{
+    text-align: center;
+}
+
+div.centerBody{
+    padding-left:10%;
+    padding-right:10%;
+    padding-bottom:10%;
+}
+
+div.centerGreen{
+    text-align:center;
+    color: #2d8b31
+}
+
+div.button{
+    text-align: center;
+}
+
+input[type=button]{
+    background-color: #c2c2c2;
+    border-radius:6px;
+}

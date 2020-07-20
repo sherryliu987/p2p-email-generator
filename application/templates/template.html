@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>P2P Email Generator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel = "stylesheet" type = "text/css" href= ../static/css/stylesheet.css>
+</head>
+<body>
+
+<script>
+    function copyEmail(emailID){
+        let copyText = document.getElementById(emailID).value;
+        try{
+            navigator.clipboard.writeText(copyText);
+            alert("Copied " + emailID + " email!")
+        }catch(err){
+            alert(err)
+        }
+    }
+</script>
+
+<img src="static/logo-transparent.png" alt = "Peer2Peer Logo">
+
+<div class = "centerBody">
+
+{% if e1 %}
+
+    <h1>Session Request Email (for tutors) </h1>
+    <div class = centerGreen>Subject: {{ date }} Peer2Peer Session Request </div>
+
+    <br><input type=hidden value="Hi {{tutor}}!
+
+Hope you're doing well{% if newTutor %} and welcome to the Peer2Peer team!{% else %}!{% endif %}{% if gca %} Peer2Peer and COVID-GCA are working together to better serve our community, and our friends at LearnTogether have graciously allowed us to utilize their tutors.
+
+Here is our website for more information:peer2peercharlotte.weebly.com.{% endif %}
+
+A tutoring session has been requested which matches your schedule and strengths! 
+
+    Student Name: {{studentName}}
+    Grade Level: {{studentGrade}}
+    Topic: {{topic}}
+    Date + Time: {{day}}, {{date}} at {{time}} EST
+
+Please respond if you're available to tutor and I will provide you with further information. Be sure to let me know if you have any questions! 
+
+Thanks and have a great day!
+{{peerLeader}} from Peer2Peer" id="session request"/>
+    <div class = "button">
+        <input type = button value = "Copy Email" onclick = "copyEmail('session request')"/>
+    </div>
+
+    <br>
+    <p>
+    Hi {{tutor}}! <br>
+    <br>
+    Hope you're doing well{% if newTutor %}
+     and welcome to the Peer2Peer team!
+    {% else %}!
+    {% endif %}
+
+    {% if gca %}
+    Peer2Peer and COVID-GCA are working together to better serve our community, and our friends at LearnTogether have
+    graciously allowed us to utilize their tutors. <br> <br> Here is our website for more information:
+    peer2peercharlotte.weebly.com.
+    {% endif %}
+
+    <br><br>A tutoring session has been requested which matches your schedule and strengths! 
+    <br>
+    <br>
+    Student Name: {{studentName}}
+    <br>
+    Grade Level: {{studentGrade}}
+    <br>
+    Topic: {{topic}}
+    <br>
+    Date + Time: {{day}}, {{date}} at {{time}} EST
+    <br><br>
+    <b><u>Please respond if you're available to tutor </u></b> and I will provide you with further information. Be sure to
+    let me know if you have any questions! 
+    <br><br>
+    Thanks and have a great day!
+    <br>
+    {{peerLeader}} from Peer2Peer
+    <br><br>
+</p>
+
+{% endif %}
+
+{% if e2 %}
+
+<p>
+    <h1>Confirmation Email (for tutors) </h1>
+    <div class = centerGreen >**remember to attach resource library**</div>
+    <br><input type=hidden value="Sounds great! Here are the details of your session.
+
+    Time: {{day}}, {{date}} at {{time}} Eastern Time
+    Join Zoom Meeting: {{zoomLink}}
+    Meeting ID: {{meetingId}}
+    Password: {{password}}{% if lessonPlan != '' %}Here is the link to the lesson plan for the session: {{lessonPlan}}{% endif %}
+
+Please take 10-20 minutes to fill the section titled lesson plan in the above document and plan how you will teach the session including what resources you will use (worksheets, concepts, notes etc.). NOTE: You can share your screen during the session.
+
+I have attached a resource library with helpful links for the lesson. Feel free to find other resources as needed!
+
+Please log on 5 minutes beforehand to get started on the platform. The session will focus on first answering any questions the student has and then providing enrichment/review on new topics. Feel free to find additional materials/worksheets as needed!
+
+As always, let me know if you have any questions and see you soon!
+{{peerLeader}} from Peer2Peer" id="tutor confirmation"/>
+
+    <div class = "button">
+        <input type = button value = "Copy Email" onclick = "copyEmail('tutor confirmation')"/>
+    </div>
+
+    <br>Sounds great! Here are the details of your session.
+
+    <br><br>Time: {{day}}, {{date}} at {{time}} Eastern Time
+    <br>Join Zoom Meeting: {{zoomLink}}
+    <br>Meeting ID: {{meetingId}}
+    <br>Password: {{password}}
+
+    {% if lessonPlan != "" %}}
+    <br><br>Here is the link to the lesson plan for the session: {{lessonPlan}}
+    {% endif %}
+
+    <br><br><b>Please take 10-20 minutes to fill the section titled <u>lesson plan</u> in the above document</b> and
+    plan how you will teach the
+    session
+    including
+    what resources you will use (worksheets,
+    concepts, notes etc.). NOTE: You can share your screen during the session.
+
+    <br><br>I have attached a resource library with helpful links for the lesson. Feel free to find other resources
+    as needed!
+
+    <br><br><b>Please log on 5 minutes beforehand </b> to get started on the platform. The session will focus on first
+                    answering
+                any questions the student has and then providing enrichment/review on new topics. Feel free to find additional materials/worksheets as needed!
+
+    <br><br>As always, let me know if you have any questions and see you soon!
+    <br>{{peerLeader}} from Peer2Peer
+
+{% endif %}
+
+    {% if e3 %}
+
+    <h1>Confirmation Email (for students) </h1>
+    <div class = centerGreen>Subject: {{ date }} Peer2Peer Session Confirmation </div>
+
+    <br><input type=hidden value="Hi {{studentName}}!
+Hope you're doing well! Your tutoring session on {{day}} has been scheduled to help you with {{topic}}. Below are some details about the session.
+
+    Mentor: {{tutor}}
+    Time: {{date}} {{time}} Eastern Time
+    Join Zoom Meeting: {{zoomLink}}
+    Meeting ID: {{meetingID}}
+    Password: {{password}} {% if lessonPlan != '' %}Here is the link to the lesson plan for the session: {{lessonPlan}}{% endif %}
+
+Please log on 5 minutes beforehand to get started on the platform. Also, please come ready with any questions/homework you may have to help your tutor better help you! Please reply to confirm your session and let me know if you have any questions! 
+
+Thanks and see you soon!  
+{{peerLeader}} from Peer2Peer" id="student confirmation"/>
+
+    <div class = "button">
+        <input type = button value = "Copy Email" onclick = "copyEmail('student confirmation')"/>
+    </div>
+
+    <br>Hi {{studentName}}!
+    <br><br>Hope you're doing well! Your tutoring session on {{day}} has been scheduled to help you with {{topic}}.
+    Below are
+    some
+    details about the session.
+
+    <br><br>Mentor: {{tutor}}
+    <br>Time: {{date}} {{time}} Eastern Time
+    <br>Join Zoom Meeting: {{zoomLink}}
+    <br>Meeting ID: {{meetingId}}
+    <br>Password: {{password}}
+
+    {% if lessonPlan != "" %}
+    <br><br>Here is the link to the lesson plan for the session: {{lessonPlan}}
+    {% endif %}
+
+    <br><br>Please log on 5 minutes beforehand to get started on the platform. Also, please come ready with any questions/homework you may have to help your tutor better help you! Please reply to confirm your session and let me know if you have any questions! 
+    <br><br>Thanks and see you soon!  
+    <br>{{peerLeader}} from Peer2Peer
+
+    {% endif %}
+
+</div>
+
+
+</body>
+</html>

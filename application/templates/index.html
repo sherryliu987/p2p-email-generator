@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>P2P Email Generator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel = "stylesheet" type = "text/css" href= ../static/css/stylesheet.css>
+
+</head>
+<body>
+
+<img src="static/logo-transparent.png" alt="Peer2Peer Logo">
+
+<div class = "form">
+<form action="{{ url_for('generate') }}" method = "GET">
+
+    <div class = "center">Select the emails you would like to generate: </div><br>
+
+    <input type="checkbox" id="e1" name="e1">
+    <label for="e1"> Session Request Email (for tutors) </label><br>
+    <input type="checkbox" id="e2" name="e2">
+    <label for="e2"> Session Confirmation Email (for tutors) </label><br>
+    <input type="checkbox" id="e3" name="e3">
+    <label for="e3"> Session Confirmation Email (for students) </label><br>
+    <br>
+    <label for="peerLeader"> Peer Leader: </label>
+    <input type = "text" id = "peerLeader" name = "peerLeader" required><br>
+    <br>
+    <label for="topic"> Session Topic: </label>
+    <input type = "text" id = "topic" name = "topic" required><br>
+    <br>
+    <label for="date"> Date + Time (EST): </label>
+    <input type = "datetime-local" id = "date" name = "date" required><br>
+    <br>
+    <label for="studentName"> Student Name: </label>
+    <input type = "text" id = "studentName" name = "studentName" required><br>
+    <br>
+    <label for="studentGrade"> Student Grade: </label>
+    <input type = "number" id = "studentGrade" name = "studentGrade" required><br>
+    <br>
+    <label for="tutor"> Tutor: </label>
+    <input type = "text" id = "tutor" name = "tutor" required><br>
+    <br>
+    <label for="gca"> From Covid-GCA: &nbsp;</label>
+    <input type = "checkbox" id = "gca" name = "gca">
+    <label for="newTutor">&nbsp;&nbsp;&nbsp;New Tutor: &nbsp;</label>
+    <input type = "checkbox" id = "newTutor" name = "newTutor"><br>
+    <br>
+    <label for="lessonPlan"> Lesson Plan (if applicable):</label>
+    <input type = "text" id = "lessonPlan" name = "lessonPlan"><br>
+
+    <br><div class="button"><input class="btn btn-primary" type="submit" value="Submit"></div>
+
+</form>
+</div>
+
+</body>
+</html>

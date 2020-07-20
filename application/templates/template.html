@@ -23,6 +23,11 @@
 
 <img src="static/logo-transparent.png" alt = "Peer2Peer Logo">
 
+{% if not e1 and not e2 and not e3 %}
+<h1>You have not selected any emails to generate. </h1>
+<br>
+{% endif %}
+
 <div class="button"><form action = {{url_for("home")}}>
     <input type = "submit" value = "Back to form">
 </form>
@@ -121,9 +126,12 @@ As always, let me know if you have any questions and see you soon!
     <br>Sounds great! Here are the details of your session.
 
     <br><br>Time: {{day}}, {{date}} at {{time}} Eastern Time
-    <br>Join Zoom Meeting: {{zoomLink}}
-    <br>Meeting ID: {{meetingId}}
-    <br>Password: {{password}}
+    <br>Join Zoom Meeting: {% if noPeerLeader %}<span style=color:#FF0000;><b> {%endif%}{{zoomLink}}{% if noPeerLeader
+    %}</b></span>{%endif%}
+    <br>Meeting ID: {% if noPeerLeader %}<span style=color:#FF0000;><b> {%endif%}{{meetingId}}{% if noPeerLeader
+    %}</b></span>{%endif%}
+    <br>Password: {% if noPeerLeader %}<span style=color:#FF0000;><b> {%endif%}{{password}}{% if noPeerLeader
+    %}</b></span>{%endif%}
 
     {% if lessonPlan != "" %}}
     <br><br>Here is the link to the lesson plan for the session: {{lessonPlan}}
@@ -180,15 +188,19 @@ Thanks and see you soon!  
 
     <br><br>Mentor: {{tutor}}
     <br>Time: {{date}} {{time}} Eastern Time
-    <br>Join Zoom Meeting: {{zoomLink}}
-    <br>Meeting ID: {{meetingId}}
-    <br>Password: {{password}}
+    <br>Join Zoom Meeting: {% if noPeerLeader %}<span style=color:#FF0000;><b> {%endif%}{{zoomLink}}{% if noPeerLeader
+    %}</b></span>{%endif%}
+    <br>Meeting ID: {% if noPeerLeader %}<span style=color:#FF0000;><b> {%endif%}{{meetingId}}{% if noPeerLeader
+    %}</b></span>{%endif%}
+    <br>Password: {% if noPeerLeader %}<span style=color:#FF0000;><b> {%endif%}{{password}}{% if noPeerLeader
+    %}</b></span>{%endif%}
 
     {% if lessonPlan != "" %}
     <br><br>Here is the link to the lesson plan for the session: {{lessonPlan}}
     {% endif %}
 
-    <br><br>Please log on 5 minutes beforehand to get started on the platform. Also, please come ready with any questions/homework you may have to help your tutor better help you! Please reply to confirm your session and let me know if you have any questions! 
+    <br><br><b>Please log on 5 minutes beforehand </b>to get started on the platform. Also, please come ready with any
+    questions/homework you may have to help your tutor better help you! Please reply to confirm your session and let me know if you have any questions! 
     <br><br>Thanks and see you soon!  
     <br>{{peerLeader}} from Peer2Peer
 

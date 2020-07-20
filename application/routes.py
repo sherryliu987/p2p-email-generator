@@ -18,7 +18,7 @@ def generate():
     e1 = request.args.get("e1") == "on"
     e2 = request.args.get("e2") == "on"
     e3 = request.args.get("e3") == "on"
-    peerLeader = request.args.get("peerLeader")
+    peerLeader = request.args.get("peerLeader").strip()
     topic = request.args.get("topic")
     rawDate = datetime.datetime.strptime(request.args.get("date"), "%Y-%m-%dT%H:%M")
     date = datetime.datetime.strftime(rawDate, "%m/%d")
@@ -31,15 +31,20 @@ def generate():
     newTutor = request.args.get("newTutor") == "on"
     lessonPlan = request.args.get("lessonPlan")
 
-    zoomLink = "Sorry, your zoom info could not be found."
-    meetingId = "Sorry, your zoom info could not be found."
-    password = "Sorry, your zoom info could not be found."
+    zoomLink = "Zoom info could not be found for " + peerLeader
+    meetingId = "Zoom info could not be found for " + peerLeader
+    password = "Zoom info could not be found for " + peerLeader
 
     for leaderInfo in zoomInfo:
         if leaderInfo["Peer Leader"] == peerLeader:
             zoomLink = leaderInfo["Zoom Info"]["Zoom Link"]
             meetingId = leaderInfo["Zoom Info"]["MeetingID"]
             password = leaderInfo["Zoom Info"]["Password"]
+
+    if "could not be found" in zoomLink:
+        noPeerLeader = True;
+    else:
+        noPeerLeader = False;
 
     return render_template("template.html",
                            e1 = e1,
@@ -58,4 +63,5 @@ def generate():
                            zoomLink = zoomLink,
                            meetingId = meetingId,
                            password = password,
-                           lessonPlan = lessonPlan)
+                           lessonPlan = lessonPlan,
+                           noPeerLeader = noPeerLeader)

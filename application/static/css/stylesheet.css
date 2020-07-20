@@ -22,7 +22,7 @@ div.form
     display: block;
     text-align: center;
 }
-form
+div.homeForm
 {
     display: inline-block;
     margin-left: auto;
@@ -51,6 +51,11 @@ div.button{
 }
 
 input[type=button]{
+    background-color: #c2c2c2;
+    border-radius:6px;
+}
+
+input[type=submit]{
     background-color: #c2c2c2;
     border-radius:6px;
 }

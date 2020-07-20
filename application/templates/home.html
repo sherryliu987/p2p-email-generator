@@ -12,6 +12,7 @@
 <img src="static/logo-transparent.png" alt="Peer2Peer Logo">
 
 <div class = "form">
+    <div class="homeForm">
 <form action="{{ url_for('generate') }}" method = "GET">
 
     <div class = "center">Select the emails you would like to generate: </div><br>
@@ -49,9 +50,13 @@
     <label for="lessonPlan"> Lesson Plan (if applicable):</label>
     <input type = "text" id = "lessonPlan" name = "lessonPlan"><br>
 
-    <br><div class="button"><input class="btn btn-primary" type="submit" value="Submit"></div>
+    <br><div class="button"><input class="btn btn-primary" type="submit" value="Submit">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input class = "btn btn-outline-danger" type = "reset">
+</div>
 
 </form>
+    </div>
 </div>
 
 </body>

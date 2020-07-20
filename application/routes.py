@@ -31,15 +31,15 @@ def generate():
     newTutor = request.args.get("newTutor") == "on"
     lessonPlan = request.args.get("lessonPlan")
 
+    zoomLink = "Sorry, your zoom info could not be found."
+    meetingId = "Sorry, your zoom info could not be found."
+    password = "Sorry, your zoom info could not be found."
+
     for leaderInfo in zoomInfo:
         if leaderInfo["Peer Leader"] == peerLeader:
             zoomLink = leaderInfo["Zoom Info"]["Zoom Link"]
             meetingId = leaderInfo["Zoom Info"]["MeetingID"]
             password = leaderInfo["Zoom Info"]["Password"]
-    if zoomLink is None:
-        zoomLink = "Sorry, your zoom info could not be found."
-        meetingId = "Sorry, your zoom info could not be found."
-        password = "Sorry, your zoom info could not be found."
 
     return render_template("template.html",
                            e1 = e1,
